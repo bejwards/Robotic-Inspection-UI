@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sensor Plot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+<body>
+    
+    <img id="plot" src="{{ url_for('display_plot') }}" alt="Plot" class="liveplot">
+    <img id="test_piece" src="{{ url_for('display_test_piece') }}" alt="Test Piece" class="test_piece">
+
+    <button class="btn btn3" onclick="Plot()">Produce Plot</button>
+    <button class="btn btn4" onclick="End_loop()">End Image Generation</button>
+    <button id="toggleButton" class="btn btn4" onclick="display_test_piece()">Display Test Piece</button>
+    
+
+    <select id="real_imaginary" class = 'dropdown'>
+        <option value="real">Real Values</option>
+        <option value="imaginary">Imaginary Values</option>
+       <!--<option value="normalised">Normalised Values</option>-->
+    </select>
+
+    <select id="colourmap" class = 'dropdown'>
+        <option value="jet">Jet</option>
+        <option value="jet_r">Jet Inverted</option>
+        <option value="RdYlGn">Red-Yellow-Green</option>
+        <option value="cool">Cool</option>
+        <option value="gist_rainbow">Rainbow</option>
+    </select>
+
+    <select id="thresholding" class = 'dropdown'>
+        <option value="entire">Entire Scan</option>
+        <option value="defects_light">Defects </option>
+        <!--<option value="defects_heavy">Defects (heavy)</option>-->
+        <option value="transparent_entire">Transparent </option>
+        <!--<option value="transparent_non_defects">Transparent (non-defects)</option>-->
+        <option value="customizable">Customizable</option>
+    </select>
+
+    
+
+    <div class="pair-container">
+        <label for="k_slider" class="slider-label">k:</label>
+        <input type="range" min="0" max="255" value="0" id="k_slider" class="slider">
+    </div>
+    <div class="pair-container">
+        <label for="p_slider" class="slider-label">p:</label>
+        <input type="range" min="0" max="255" value="150" id="p_slider" class="slider">
+    </div>
+
+    </div>
+
+    <button class="btn btn6" onclick="save_image()">Save Image</button>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='frontend.js') }}"></script>
+    
+</body>
+</html>
